@@ -25,6 +25,9 @@ class SingleCustomer extends Component {
     this.props.delete(this.state.customer.id);
     this.props.history.push("/customers")
   }
+  goback = () => {
+    this.props.history.push("/customers")
+  }
 
   onEdit = () => {
     this.setState({editMode: true})
@@ -113,6 +116,7 @@ class SingleCustomer extends Component {
           {saveContent}
           {cancelContent}
           <Button onClick={this.delete} color="danger">Delete {this.state.customer.name}</Button>
+          <Button onClick={this.goback} color="success">Go Back </Button>
         </div>
       </div>
     )
