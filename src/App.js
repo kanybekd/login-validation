@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, withRouter } from "react-router-dom";
+import { BrowserRouter as  Switch, Route, Link, Redirect, withRouter } from "react-router-dom";
 import { Button } from "reactstrap";
 
 import Customers from './Customers';
@@ -99,7 +99,8 @@ class App extends Component {
           <div className="pages">
             <Switch>
               <Route path="/" exact>
-                <div className="page">Home Page</div>
+                {/* <div className="page">Home Page</div> */}
+                <Redirect to="/login" />
               </Route>
               <Route path="/about">
                 <div className="page">About Page</div>
@@ -118,7 +119,7 @@ class App extends Component {
                 <SingleCustomer delete={this.delete} customers={this.state.customers} />
               </Route>
               <Route path="/login">
-                <Login setUser={this.setUser} />
+               {isLoggedIn ? <Redirect to="/customers" />: <Login setUser={this.setUser} />} 
               </Route>
             </Switch>
           </div>

@@ -81,15 +81,15 @@ class Customers extends Component {
 
     return (
       <div >
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <DebounceInput
                 minLength={2}
                 onChange={this.onChange}
                 debounceTimeout={300}
             />
             </div>
-            <div class="col"> <Select onChange={this.onSelect} options={options} /></div>
+            <div className="col"> <Select onChange={this.onSelect} options={options} /></div>
           </div>
         
         Searching by: {searchBy}
@@ -113,14 +113,14 @@ class Customers extends Component {
           <tbody>
             {
               filteredC.map((customer, ind)=>{
-                const { id, name, lastName, avatar, email, state, phone,
-                role, github, courses, payment, status } = customer;
+                const { id, name,  avatar, email, state, phone,
+                role, github, courses, payment} = customer;
                 const url = `/customer/${id}`;
                 const urlEdit = `/customer/${id}/edit`;
                 return (
-                <tr>
+                <tr key={id}>
                   <th scope="row">{ind+1}</th>
-                  <td><img src={avatar} /></td>
+                  <td><img src={avatar} alt="customeravatar"/></td>
                   <td> <Link to={url}>{name}</Link> </td>
                   <td>{state}</td>
                   <td>{email}</td>
